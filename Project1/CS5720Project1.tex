@@ -133,64 +133,23 @@ Additional test results are appended to the original \textit{test.txt} file ever
 To generate datasets for the empirical analysis, I used a public domain English text ("Folk Tales Every Child Should Know" by Hamilton Wright Mabie) downloaded from Project Gutenberg. The text was split into ten character arrays of varying lengths (100, 175, 250, ..., 775). For each array of length \( n \), 50 arrays were generated.
 
 \section{Deliverables 3, 4, 5: Results}
-Plots were split by character, and not by the worst/best/average case run-times, because it was easier to see and understand the patterns. For example, the best cases for characters 'e' and 'm' are so close that it was difficult to see their slight differences when graphed together. In another example, characters 'Q' and '\%' have the same worst/best/average cases. This led to the appearance of only one line when multiple were graphed together. In fact, the graphs for 'Q' and '\%' will be split into three graphs each (worst/best/average), so it can be clearly seen that all cases have the same run-time. 
+Plots were split by character, and not by the worst/best/average case run-times, because it was easier to see and understand the patterns. For example, the best cases for characters 'e' and 'm' are so close that it was difficult to see their slight differences when graphed together. In another example, characters 'Q' and '\%' have the same worst/best/average cases. This led to the appearance of only one line when multiple were graphed together. In fact, the graphs for 'Q' and '\%' will be split into three graphs each (worst/best/average), so it can be clearly seen that all cases have the same run-time. The conclusion will include conjectures about the best, worst, and average case runtime of my algorithm.
 	
 \subsection{Character: \textit{e}}
-The worst-case runtime occurs when the search key is either found at the last index of the array or is not present. Below are the plots for the worst-case runtimes for each test character.
-	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{runtimeanalysise.pdf}
-		\caption{Worst-case runtime for character `e`.}
-	\end{figure}
-	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{runtimeanalysism.pdf}
-		\caption{Worst-case runtime for character `m`.}
-	\end{figure}
-	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{runtimeanalysisQ.pdf}
-		\caption{Worst-case runtime for character `Q`.}
-	\end{figure}
-	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{runtimeanalysispercent.pdf}
-		\caption{Worst-case runtime for character `\%`.}
-	\end{figure}
-	
-\subsection{Best-Case Runtime}
-The best-case runtime occurs when the search key is found at the first index of the array.
-	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{runtimeanalysise.pdf}
-		\caption{Best-case runtime for character `e`.}
-	\end{figure}
-	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{runtimeanalysism.pdf}
-		\caption{Best-case runtime for character `m`.}
-	\end{figure}
-	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{runtimeanalysisQ.pdf}
-		\caption{Best-case runtime for character `Q`.}
-	\end{figure}
-	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=\textwidth]{runtimeanalysispercent.pdf}
-		\caption{Best-case runtime for character `\%`.}
-	\end{figure}
-	
-\section{Conclusion}
-This project provided an empirical analysis of a brute-force search algorithm. The worst-case, best-case, and average-case runtimes were measured for different search keys across varying array sizes. Our findings are consistent with the theoretical time complexities:
+Figure 1 shows the plot for best, worst, and average-case run-times of the test character 'e' in our Search algorithm.
+    \begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{runtime_analysis_e.pdf}
+	\caption{All run-times for character `e`.}
+    \end{figure}
+
+\begin{description}
+    \item[Best-Case] As can be seen in Figure 1, the best-case runtime for 'e' was always zero. This means that there was always an array, in every set of length $n$, where 'e' was the first character in the array. This best case is $\Omega(1)$, so constant time.
+    \item[Worst-Case] The worst-case line in Figure 1 never reaches the full length of the array, so this means that 'e' was found at least once in every array across all length $n$ arrays. This worst case is O$(n)$ because all the data points are some constant multiplied by array length $n$ ($\frac{n}{2}$, $\frac{n}{3}$, etc.).
+    \item[Average-Case] The average case in Figure 1 is clearly between the best and worst cases, and skews towards the lower end. This is not surprising as 'e' is a very common character on English, and will almost always be found quickly (constant time) for large amounts of text. 
+\end{description}
+
+
 	
     \begin{itemize}
         \item Worst-case runtime: \( O(n) \)
