@@ -8,7 +8,7 @@ To generate my CS 5720 Project 1, complete the following steps:
 	./project1.sh
 
 This assumes you have a Python 3.x environment with numpy and matplotlib, and that you have LaTeX on your system with the required libraries.
-
+ 
 The completed PDF is generated as CS5720Project1.pdf.
 
 Files
