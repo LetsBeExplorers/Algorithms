@@ -188,7 +188,7 @@ Below are the plots for the best, worst, and average-case run-times for the test
 
 \begin{description}
     \item[Worst-Case] The worst-case line in Figure 3 shows that 'Q' was not found in at least one array across all sets of arrays of length $n$. This is also a very clearly linear line, so the order of growth for the worst-case is $O(n)$.
-    \item[Best-Case] As can be seen in Figure 4, the best case in every instance was equal to the length of the array. This means that the character 'Q' was never found in any of the arrays. Therefore, the best case for character 'Q' is $O(n)$. Knowing that the worst-case (Figure 3) is also $n$ in every instance, this leads us to hypothesize that the average-case will also be $O(n)$.
+    \item[Best-Case] As can be seen in Figure 4, the best case in every instance was equal to the length of the array. This means that the character 'Q' was never found in any of the arrays. Therefore, the best case for character 'Q' is $O(n)$. Knowing that the worst-case (Figure 3) is also $n$ in every instance, this leads us to hypothesize that the average-case will also be $O(n)$. These results are not the same as was found for characters 'e' and 'm', which is not surprising because 'Q' is a much less common letter. 
     \item[Average-Case] The average-case line in Figure 5 confirms again that the character 'Q' was never found in any of the arrays. Therefore, the runtime of any algorithm searching for the character 'Q' in this text will equal the size of the text. This means that the average-case is also $O(n)$, as we hypothesized in the previous cases. 
 \end{description}
 
@@ -214,9 +214,9 @@ Below are the plots for the best, worst, and average-case run-times for the test
 	\end{figure}
 
 \begin{description}
-    \item[Worst-Case] The worst-case line in Figure 6 shows that '\%' was not found in at least one array across all sets of arrays of length $n$. This is also a very clearly linear line, so the order of growth for the worst-case is $O(n)$.
-    \item[Best-Case] As can be seen in Figure 7, the best case in every instance was equal to the length of the array. This means that the character '\%' was never found in any of the arrays. Therefore, the best case for character '\%' is $O(n)$. Knowing that the worst-case (Figure 6) is also $n$ in every instance, this leads us to hypothesize that the average-case will also be $O(n)$.
-    \item[Average-Case] The average-case line in Figure 8 confirms again that the character '\%' was never found in any of the arrays. Therefore, the runtime of any algorithm searching for the character '\%' in this text will equal the size of the text. This means that the average-case is also $O(n)$, as we hypothesized in the previous cases. 
+    \item[Worst-Case] The worst-case line in Figure 6 shows that '\%' was not found in at least one array across all sets of arrays of length $n$. This is also a very clearly linear line, so the order of growth for the worst-case is $O(n)$. These results are exactly what was found for character 'Q'. 
+    \item[Best-Case] As can be seen in Figure 7, the best case in every instance was equal to the length of the array. This means that the character '\%' was never found in any of the arrays. Therefore, the best case for character '\%' is $O(n)$. Knowing that the worst-case (Figure 6) is also $n$ in every instance, this leads us to hypothesize that the average-case will also be $O(n)$. These results are, again, exactly what was found for character 'Q'.
+    \item[Average-Case] The average-case line in Figure 8 confirms again that the character '\%' was never found in any of the arrays. Therefore, the runtime of any algorithm searching for the character '\%' in this text will equal the size of the text. This means that the average-case is also $O(n)$, as we hypothesized in the previous cases. These results match what was found for character 'Q'. 
 \end{description}
 
 \section{Conclusion}
