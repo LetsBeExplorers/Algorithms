@@ -530,3 +530,108 @@ K = O
 Search =  19
 Index =  19
 
+Verification Test
+['m', 'R', '\\', '2', '\x00', 'k', '3', '/', 'h', 'w', 'X', '?', 'V', '1', 'n', 'H', '#', 'L', '@', 'C', 'V']
+Passed
+K = J
+Search =  21
+Index =  21
+
+Verification Test
+['v', 'x', 'r', '.', '7', '6', '5', 'g', 'k', 'q', 'g', 'u', 'J', 'I', 'v', 'w', 'H', '.', 'r', 'D', 'H', '$', 'g', '4', 'N', '/', '\\', 'k', '9', 'J', 'L', '5', 'b', '#', ' ', 'N', 'x']
+Passed
+K = 6
+Search =  5
+Index =  5
+
+Verification Test
+['b', '&', '&', 'H', 'r', '\x00', '4', ',', '(']
+Passed
+K = a
+Search =  9
+Index =  9
+
+Verification Test
+['V', 'b', 'R', 'R', 'y', 'R', '5', 'u', 'Y', ')', '7', 'Y', '*', 'F', '#', 'l', 't', '\x00', 'K', 'p', 'Y', 'n', 'a', 'Z', 'B', 'b', 'T', 'h', 'x', 'T', 'x', 'w', 'n', 'x', 'v', 'J', 'R', ',', 'V', '6', 'z', '1', 'O', 'u']
+Passed
+K = 0
+Search =  44
+Index =  44
+
+Verification Test
+['b', 'v', 'O', '.', 'B', '#', 'h', '5', '4', 'h', 'm', 'r', 'A', 'b', 's', '8', '$', 'p', 'i', 'E', '@', 'l', '9', 'r', 'Y', '^', 'Q', 'T', 'G', 'w', 'x', 't', 'j', '.', '(', '\\']
+Passed
+K = ?
+Search =  36
+Index =  36
+
+Verification Test
+[',', '2', 'c', '\\', 'Y', 's', 'U', ',', 'v', 'V', ',', 'P', 'v', 'H', 'J', '(', 'Q', '#', 'D', 'W', 'q', 'K', ',', 'k', '2', '3', 'A', 'b', 'D', '0', 'd', '^', 'z', 'x', 'Z', 'Q', 'B', '2', 'f', '\x00', 'B', ',', '5']
+Passed
+K = *
+Search =  43
+Index =  43
+
+Verification Test
+['a', '9', '*', 'z', 't', 'h', 'P', 's', '2', '#', '.', '5', 'Z', '3', 'i', '$', 'I', 'P', 'G', 'c', '\x00', 'j', 'I', '0', 'x', 'S', 'j', '.', 'C', 'D', '%', 'n', 'm', 'n', '0', 'm', '.', 'p', '7']
+Passed
+K = b
+Search =  39
+Index =  39
+
+Verification Test
+['Y', 'q', ')', '(', 'h', 'v', 'W', 'd', '\\', 'c', 'N', '1', 'l', '1', ' ', 'q', '^', 'f', 'q']
+Passed
+K = g
+Search =  19
+Index =  19
+
+Verification Test
+[')', '?', '/', 'm', 'C', 'G', 'm', 'J', 'd', 'S', 'A', 'x', 'P', '\\', 'M', '.', 'z', '5', 'q', 'z', 'i', 'M', 'l', 'E']
+Passed
+K = a
+Search =  24
+Index =  24
+
+Verification Test
+['G', 'e', 'i', '?', 'E', 'i', '\\', 'u', 'o', 'M', 't', '8', 'a', 'F', '4', 'A', 'E', 'P', '(', '&', 'f', '8', '\x00', '7', 'S', 'y', 'W', 'Y', '&', 'M']
+Passed
+K = j
+Search =  30
+Index =  30
+
+Verification Test
+['e', 'O', '(', '\\', 'f', 'c', 'i', 'h', 'i', '&', 'D', 'O', 'L', ',', 'h', '3', 'F', 'k', 'H', '6', '*', '?', '4', '\x00', '/', 'n', '2', 's', 'I', 'y', '!', 'G', 'h', 'Q', ',', '(', '6', 'q', 'N', 'U', 'e', 'n', 'S']
+Passed
+K = )
+Search =  43
+Index =  43
+
+Verification Test
+['1', '9', 'b', 'o', 'V', '#', 'R', '&', 'H', '/', 'P', '\\', 's']
+Passed
+K = G
+Search =  13
+Index =  13
+
+Verification Test
+['&', 'T', 'W', 'g', '\\', 's', 'Y', '7', '@', 'b', 'c', 'x', 'A', 'Q', '2', 'I', 'o', 'Q', 'j', 'z', 'Z', 'e', '.', '?', 'l', '^', 'Z', 'n', 'M', '5', 'e']
+Passed
+K = g
+Search =  3
+Index =  3
+
+Verification Test
+['d', '9', 'l', '3', 'x', '/', 'Q', 'A', '/', '1', ',', '$', 'Y', 'Z', '6', '#', '?', 'Z', 'e', 'A', 'G', 'b', '%', '.', 'x', 'o', '5', '/', '%', 'W', 'z', ')', 'R', 't', 'x', '1', 'U', 'j', 'v', 'F']
+Passed
+K = q
+Search =  40
+Index =  40
+
+Verification Test
+['r', 'u', '/', '8', 'S', ')', '9', 'W', '\x00', '8', '^', '2', 'E', 'N', 'f', 'd', 'W', 'L']
+Passed
+K = )
+Search =  5
+Index =  5
+
