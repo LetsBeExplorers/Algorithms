@@ -15,3 +15,4 @@ Files
 project1.sh: shell commands to generate the completed project
 main.py: the source code for the image files
 CS5720Project1.txt: the LaTeX code for generating the PDF document
+Screenshots: screenshots showing testing was successfully completed
