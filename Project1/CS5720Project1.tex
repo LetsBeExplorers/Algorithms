@@ -145,7 +145,7 @@ Figure 1 shows the plot for best, worst, and average-case run-times of the test 
     \end{figure}
 
 \begin{description}
-    \item[Best-Case] As can be seen in Figure 1, the best-case runtime for 'e' was always zero. This means that there was always an array, in every set of length $n$, where 'e' was the first character in the array. This best case is $\Omega(1)$, so constant time.
+    \item[Best-Case] As can be seen in Figure 1, the best-case runtime for 'e' was always zero. This means that there was always an array, in every set of length $n$, where 'e' was the first character in the array. This best case is O$(1)$, so constant time.
     \item[Worst-Case] The worst-case line in Figure 1 never reaches the full length of the array, so this means that 'e' was found at least once in every array across all length $n$ arrays. This worst case is O$(n)$ because all the data points are some constant multiplied by the array length $n$ ($\frac{n}{2}$, $\frac{n}{3}$, etc.).
     \item[Average-Case] The average case in Figure 1 is clearly between the best and worst cases, and skews towards the lower end. This is not surprising as 'e' is a very common character on English, and will almost always be found quickly (constant time) for large amounts of text. 
 \end{description}
@@ -159,10 +159,10 @@ Below is the plot for the best, worst, and average-case run-times for the test c
 		\caption{All run-times for character `m`.}
 	\end{figure}
 
- \begin{description}
-    \item[Best-Case] As can be seen in Figure 2, the best-case runtime for 'm' hovered around zero. It is not as common as 'e', but it was still found in the first few characters of at least one length $n$ array per set. This best case is also $\Omega(1)$, so constant time.
+\begin{description}
+    \item[Best-Case] As can be seen in Figure 2, the best-case runtime for 'm' hovered around zero. It is not as common as 'e', but it was still found in the first few characters of at least one length $n$ array per set. This best case is also O$(1)$, so constant time.
     \item[Worst-Case] The worst-case line in Figure 2 shows that 'm' was not always found. It was sometimes found - most often in the larger arrays - and sometimes not - less often in the smaller arrays. Given that 'm' is a less common character in the English language, these results are not surprising. This worst case is O$(n)$ because all the data points are some constant multiplied by the array length $n$ ($n$, $\frac{n}{2}$, $\frac{n}{3}$, etc.).
-    \item[Average-Case] The average-case line in Figure 2 shows that the character 'm' \textit{was} found in the array, on average. This line falls pretty squarely in between the best and worst cases and seems to remain mostly constant, so the average-case in this situation looks like $\Theta(1)$. 
+    \item[Average-Case] The average-case line in Figure 2 shows that the character 'm' \textit{was} found in the array, on average. This line falls pretty squarely in between the best and worst cases and seems to remain mostly constant, so the average-case in this situation looks like O$(1)$. 
 \end{description}
 
 \subsection{Character: \textit{Q}}
@@ -171,27 +171,54 @@ Below are the plots for the best, worst, and average-case run-times for the test
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{runtime_analysis_worst_Q.pdf}
-		\caption{Worst-case runtime for character "Q'.}
+		\caption{Worst-case runtime for character 'Q'.}
 	\end{figure}
 
         \begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{runtime_analysis_best_Q.pdf}
-		\caption{Best-case runtime for character "Q'.}
+		\caption{Best-case runtime for character 'Q'.}
 	\end{figure}
 
         \begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{runtime_analysis_average_Q.pdf}
-		\caption{Average-case runtime for character "Q'.}
+		\caption{Average-case runtime for character 'Q'.}
 	\end{figure}
 
 \begin{description}
-    \item[Best-Case] As can be seen in Figure 4, the best case in every instance was equal to the length of the array. This means that the character 'Q' was never found in any of the arrays. Therefore, the best case for character 'Q' is $\Omega(n)$. Given this information, we can guess that the order of growth for the remaining sections will also be equal to $n$.
+    \item[Best-Case] As can be seen in Figure 4, the best case in every instance was equal to the length of the array. This means that the character 'Q' was never found in any of the arrays. Therefore, the best case for character 'Q' is O$(n)$. Given this information, we can guess that the order of growth for the remaining sections will also be equal to $n$.
     \item[Worst-Case] The worst-case line in Figure 3 shows that 'Q' was not found in at least one array per set of arrays of length $n$. Knowing that the best-case (Figure 4) is also $n$ in every instance, this confirms our previous conjecture that the worst-case order of growth will also be $n$. So, as already mentioned, the worst-case for character 'Q' is O$(n)$.
-    \item[Average-Case] The average-case line in Figure 5 confirms again that the character 'Q' was never found in any of the arrays. Therefore, the runtime of any algorithm searching for the character 'Q' in this text will equal the size of the text. This means that the average-case is also $\Theta(n)$.
+    \item[Average-Case] The average-case line in Figure 5 confirms again that the character 'Q' was never found in any of the arrays. Therefore, the runtime of any algorithm searching for the character 'Q' in this text will equal the size of the text. This means that the average-case is also O$(n)$.
 \end{description}
-	
+
+\subsection{Character: \textit{\%}}
+Below are the plots for the best, worst, and average-case run-times for the test character '\%'.
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{runtime_analysis_worst_pcnt.pdf}
+		\caption{Worst-case runtime for character '\%'.}
+	\end{figure}
+
+        \begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{runtime_analysis_best_pcnt.pdf}
+		\caption{Best-case runtime for character '\%'.}
+	\end{figure}
+
+        \begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{runtime_analysis_average_pcnt.pdf}
+		\caption{Average-case runtime for character '\%'.}
+	\end{figure}
+
+\begin{description}
+    \item[Best-Case] As can be seen in Figure 6, the best case in every instance was equal to the length of the array. This means that the character '\%' was never found in any of the arrays. Therefore, the best case for character '\%' is O$(n)$. Given this information, we can guess that the order of growth for the remaining sections will also be equal to $n$.
+    \item[Worst-Case] The worst-case line in Figure 7 shows that '\%' was not found in at least one array per set of arrays of length $n$. Knowing that the best-case (Figure 6) is also $n$ in every instance, this confirms our previous conjecture that the worst-case order of growth will also be $n$. So, as already mentioned, the worst-case for character '\%' is O$(n)$.
+    \item[Average-Case] The average-case line in Figure 8 confirms again that the character '\%' was never found in any of the arrays. Therefore, the runtime of any algorithm searching for the character '\%' in this text will equal the size of the text. This means that the average-case is also O$(n)$.
+\end{description}
+
 \section{Conclusion}
 This project provided an empirical analysis of a brute-force search algorithm. The worst-case, best-case, and average-case run-times were measured for different search keys across varying array sizes. Our findings are consistent with the theoretical time complexities:
 	
