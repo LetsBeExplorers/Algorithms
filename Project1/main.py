@@ -191,7 +191,7 @@ def plot_result(results, sizes, output_name, case, case_label, lineColor):
         plt.ylabel("Runtime")
         plt.legend()
         plt.grid(True)
-        plt.savefig(f"{output_name}_{char}.pdf")  # Save plot for LaTeX
+        plt.savefig(f"{output_name}.pdf")  # Save plot for LaTeX
         plt.close()
 
 # filters a dictionary by key
@@ -208,14 +208,14 @@ for key in results.keys():
         plot_results(newDict, sizes, "runtime_analysis")
     elif (key == 'Q'):
         newDict = {key: results[key] for key in results.keys() & 'Q'}
-        plot_result(newDict, sizes, "runtime_analysis_best", 'best', 'Best Case', 'green')
-        plot_result(newDict, sizes, "runtime_analysis_worst", 'worst', 'Worst Case', 'orange')
-        plot_result(newDict, sizes, "runtime_analysis_average", 'average', 'Average Case', 'blue')
+        plot_result(newDict, sizes, "runtime_analysis_best_Q", 'best', 'Best Case', 'green')
+        plot_result(newDict, sizes, "runtime_analysis_worst_Q", 'worst', 'Worst Case', 'orange')
+        plot_result(newDict, sizes, "runtime_analysis_average_Q", 'average', 'Average Case', 'blue')
     elif (key == '%'):
         newDict = {key: results[key] for key in results.keys() & '%'}
-        plot_result(newDict, sizes, "runtime_analysis_best", 'best', 'Best Case', 'green')
-        plot_result(newDict, sizes, "runtime_analysis_worst", 'worst', 'Worst Case', 'orange')
-        plot_result(newDict, sizes, "runtime_analysis_average", 'average', 'Average Case', 'blue')
+        plot_result(newDict, sizes, "runtime_analysis_best_pcnt", 'best', 'Best Case', 'green')
+        plot_result(newDict, sizes, "runtime_analysis_worst_pcnt", 'worst', 'Worst Case', 'orange')
+        plot_result(newDict, sizes, "runtime_analysis_average_pcnt", 'average', 'Average Case', 'blue')
 
 print("Results successfully graphed and saved to files")
 
