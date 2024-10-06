@@ -170,9 +170,9 @@ print("Experiment results succesfully written to file: results.txt")
 def plot_results(results, sizes, output_name):
     for char, data in results.items():
         plt.figure(figsize=(10, 6))
+        plt.plot(sizes, data['average'], label='Average case', marker='o')
         plt.plot(sizes, data['worst'], label='Worst case', marker='o')
         plt.plot(sizes, data['best'], label='Best case', marker='o')
-        plt.plot(sizes, data['average'], label='Average case', marker='o')
         plt.title(f"Runtime analysis for character: {char}")
         plt.xlabel("Array Size (n)")
         plt.ylabel("Runtime")
@@ -182,10 +182,10 @@ def plot_results(results, sizes, output_name):
         plt.close()
 
 # Plotting function
-def plot_result(results, sizes, output_name, case, case_label):
+def plot_result(results, sizes, output_name, case, case_label, lineColor):
     for char, data in results.items():
         plt.figure(figsize=(10, 6))
-        plt.plot(sizes, data[case], label=case_label, marker='o')
+        plt.plot(sizes, data[case], label=case_label, marker='o', color=lineColor)
         plt.title(f"{case}-case runtime analysis for character: {char}")
         plt.xlabel("Array Size (n)")
         plt.ylabel("Runtime")
@@ -208,14 +208,14 @@ for key in results.keys():
         plot_results(newDict, sizes, "runtime_analysis")
     elif (key == 'Q'):
         newDict = {key: results[key] for key in results.keys() & 'Q'}
-        plot_result(newDict, sizes, "runtime_analysis_best", 'best', 'Best Case')
-        plot_result(newDict, sizes, "runtime_analysis_worst", 'worst', 'Worst Case')
-        plot_result(newDict, sizes, "runtime_analysis_average", 'average', 'Average Case')
+        plot_result(newDict, sizes, "runtime_analysis_best", 'best', 'Best Case', 'green')
+        plot_result(newDict, sizes, "runtime_analysis_worst", 'worst', 'Worst Case', 'orange')
+        plot_result(newDict, sizes, "runtime_analysis_average", 'average', 'Average Case', 'blue')
     elif (key == '%'):
         newDict = {key: results[key] for key in results.keys() & '%'}
-        plot_result(newDict, sizes, "runtime_analysis_best", 'best', 'Best Case')
-        plot_result(newDict, sizes, "runtime_analysis_worst", 'worst', 'Worst Case')
-        plot_result(newDict, sizes, "runtime_analysis_average", 'average', 'Average Case')
+        plot_result(newDict, sizes, "runtime_analysis_best", 'best', 'Best Case', 'green')
+        plot_result(newDict, sizes, "runtime_analysis_worst", 'worst', 'Worst Case', 'orange')
+        plot_result(newDict, sizes, "runtime_analysis_average", 'average', 'Average Case', 'blue')
 
 print("Results successfully graphed and saved to files")
 
