@@ -70,7 +70,20 @@ def newIntArray():
 # Confirm the results of my Search algorithm match the built in Python function
 # Runs both functions through a series of tests and returns a pass/fail result
 def verificationTest(A, K):
+    print("Verification Test")
+    print(A)
 
+    try:
+        assert hybrid_sort(A, K) == A.sort(), "Failed"
+        print("Passed")
+        print("K =",K)
+        print("Hybrid = ", hybrid_sort(A,K))
+        print("Sort = ", A.sort())
+    except AssertionError:
+        print("Failed")
+        print("K =",K)
+        print("Hybrid = ", hybrid_sort(A,K))
+        print("Sort = ", A.sort())
 
 # test sorting algorithm against python sorting alogrithm
 # append test results to a file
