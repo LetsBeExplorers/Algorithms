@@ -75,16 +75,16 @@ def verificationTest(A, K):
     print(A)
 
     try:
-        assert hybrid_sort(A, K) == A.sort(), "Failed"
+        assert hybrid_sort(A, K) == sorted(A), "Failed"
         print("Passed")
         print("K =",K)
         print("Hybrid = ", hybrid_sort(A,K))
-        print("Sort = ", A.sort())
+        print("Sort = ", sorted(A))
     except AssertionError:
         print("Failed")
         print("K =",K)
         print("Hybrid = ", hybrid_sort(A,K))
-        print("Sort = ", A.sort())
+        print("Sort = ", sorted(A))
 
 # test sorting algorithm against python sorting alogrithm
 # append test results to a file
