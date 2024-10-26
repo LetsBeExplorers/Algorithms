@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 # ***Start of Deliverable 1***
 
 # Insertion sort implementation
-def insertion_sort(arr):
+def InsertionSort(arr):
     n = len(arr)
 
     # if the array has 0 or 1 items then it is already sorted
@@ -29,7 +29,7 @@ def insertion_sort(arr):
     return arr
 
 # Merge function for merge sort
-def merge(left, right):
+def Merge(left, right):
     result = []
     i = j = 0
 
@@ -51,15 +51,15 @@ def merge(left, right):
     return result
 
 # Hybrid sort implementation
-def hybrid_sort(arr, K):
+def HybridSort(arr, K):
     # for values that are at or below the threshold, use insertion sort
     if len(arr) <= K:
-        return insertion_sort(arr)
+        return InsertionSort(arr)
     else: # otherwise recursively sort the array using mergesort techniques
         mid = len(arr) // 2
-        left = hybrid_sort(arr[:mid], K)
-        right = hybrid_sort(arr[mid:], K)
-        return merge(left, right)
+        left = HybridSort(arr[:mid], K)
+        right = HybridSort(arr[mid:], K)
+        return Merge(left, right)
 
 # generates a random array of integers (random length) for sorting
 def newIntArray():
@@ -76,15 +76,15 @@ def verificationTest(A, K):
     print(A)
 
     try:
-        assert hybrid_sort(A, K) == sorted(A), "Failed"
+        assert HybridSort(A, K) == sorted(A), "Failed"
         print("Passed")
         print("K =",K)
-        print("Hybrid = ", hybrid_sort(A,K))
+        print("Hybrid = ", HybridSort(A,K))
         print("Sort = ", sorted(A))
     except AssertionError:
         print("Failed")
         print("K =",K)
-        print("Hybrid = ", hybrid_sort(A,K))
+        print("Hybrid = ", HybridSort(A,K))
         print("Sort = ", sorted(A))
 
 # test sorting algorithm against python sorting alogrithm
@@ -113,7 +113,7 @@ def run_time_experiment(K_values, n_values, num_trials=5, sorted_input=False):
                 else:
                     arr = random.sample(range(1000000), n)
                 start_time = time.time()
-                hybrid_sort(arr, K)
+                HybridSort(arr, K)
                 total_time += time.time() - start_time
             avg_times[n].append(total_time / num_trials)
     return avg_times
