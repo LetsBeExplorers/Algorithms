@@ -52,11 +52,12 @@ def merge(left, right):
 
 # Hybrid sort implementation
 def hybrid_sort(arr, K):
+    # for values that are at or below the threshold, use insertion sort
     if len(arr) <= K:
         return insertion_sort(arr)
-    else:
+    else: # otherwise recursively sort the array using mergesort techniques
         mid = len(arr) // 2
-        left = hybrid_sort(arr[:mid-1], K)
+        left = hybrid_sort(arr[:mid], K)
         right = hybrid_sort(arr[mid:], K)
         return merge(left, right)
 
