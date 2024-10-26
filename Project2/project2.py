@@ -174,18 +174,18 @@ print("Optimal Results successfully plotted in file: optimal_k.png")
 
 # ***Deliverable 4***
 
-# # Run experiments on sorted arrays
-# avg_times_sorted = run_time_experiment(K_values, n_values, sorted_input=True)
+# Run experiments on sorted arrays
+avg_times_sorted = run_time_experiment(K_values, n_values, sorted_input=True)
 
-# # Save the plot for sorted array results
-# plot_results(avg_times_sorted, K_values, n_values, "sorted_results.png", "Average Running Time on Sorted Arrays")
-# print("Sorted Timed Results successfully plotted in file: random_results.png")
+# Save the plot for sorted array results
+plot_results(avg_times_sorted, K_values, n_values, "sorted_results.png", "Average Running Time on Sorted Arrays")
+print("Sorted Timed Results successfully plotted in file: random_results.png")
 
-# # Identify optimal K for sorted arrays
-# optimal_ks_sorted = find_optimal_k(avg_times_sorted, K_values, n_values)
+# Identify optimal K for sorted arrays
+optimal_ks_sorted = find_optimal_k(avg_times_sorted, K_values, n_values)
 
-# # Save the plot for optimal K on sorted arrays
-# plot_optimal_k(optimal_ks_sorted, n_values, "optimal_k_sorted.png")
-# print("Sorted Optimal Results successfully plotted in file: optimal_k_sorted.png")
+# Save the plot for optimal K on sorted arrays
+plot_optimal_k(optimal_ks_sorted, n_values, "optimal_k_sorted.png")
+print("Sorted Optimal Results successfully plotted in file: optimal_k_sorted.png")
 
-# ***End of Deliverable 4***
+#***End of Deliverable 4***
