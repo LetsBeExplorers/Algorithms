@@ -1,5 +1,6 @@
 import random
 import time
+import sys
 import matplotlib.pyplot as plt
 
 # ***Start of Deliverable 1***
@@ -64,7 +65,7 @@ def newIntArray():
     ints = []
     upperLimit = random.randint(1,50)
     for i in range(1, upperLimit):
-        ints.append(randint(0,100))
+        ints.append(random.randint(0,100))
     return ints
 
 # Confirm the results of my Search algorithm match the built in Python function
@@ -91,7 +92,7 @@ def verificationTest(A, K):
 with open("test.txt", "a") as file:
     sys.stdout = file # send stdout to a file
     for i in range(0,5):
-        verificationTest(newIntArray(), randint(5,25)) # random values of K
+        verificationTest(newIntArray(), random.randint(5,25)) # random values of K
         print()
 
 sys.stdout = sys.__stdout__  # Reset standard output
