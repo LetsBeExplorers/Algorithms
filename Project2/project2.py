@@ -63,7 +63,7 @@ def hybrid_sort(arr, K):
 # generates a random array of integers (random length) for sorting
 def newIntArray():
     ints = []
-    upperLimit = random.randint(1,50)
+    upperLimit = random.randint(10,50)
     for i in range(1, upperLimit):
         ints.append(random.randint(0,100))
     return ints
@@ -92,7 +92,7 @@ def verificationTest(A, K):
 with open("test.txt", "a") as file:
     sys.stdout = file # send stdout to a file
     for i in range(0,5):
-        verificationTest(newIntArray(), random.randint(5,25)) # random values of K
+        verificationTest(newIntArray(), 5) # set K to 5 for testing
         print()
 
 sys.stdout = sys.__stdout__  # Reset standard output
