@@ -6,32 +6,45 @@ import matplotlib.pyplot as plt
 def insertion_sort(arr):
     n = len(arr)
 
-    # If the array has 0 or 1 elements, then it is already sorted
+    # if the array has 0 or 1 items then it is already sorted
     if n <= 1:
-        return
+        return arr
 
     for i in range(1, n):
+        # current item is the key to be inserted in the right position
         key = arr[i]
         j = i - 1
+
+        # move items greater than key one position ahead
         while j >= 0 and key < arr[j]:
-            arr[j + 1] = arr[j]
+            arr[j + 1] = arr[j] # shift items to the right
             j -= 1
+
+        # put the key in the right position
         arr[j + 1] = key
+
     return arr
 
 # Merge function for merge sort
 def merge(left, right):
     result = []
     i = j = 0
+
+    # compare the items of both arrays and append whichever is smaller
     while i < len(left) and j < len(right):
         if left[i] < right[j]:
-            result.append(left[i])
+            result.append(left[i]) # left item was smaller so add it
             i += 1
         else:
-            result.append(right[j])
+            result.append(right[j]) # right item was smaller so add it
             j += 1
-    result.extend(left[i:])
-    result.extend(right[j:])
+
+    # if left was emptied first, then add the rest of the right array
+    if i == len(left):
+        result.extend(right[j:])
+    else: # otherwise add the rest of the left array
+        result.extend(left[i:])
+    
     return result
 
 # Hybrid sort implementation
@@ -40,7 +53,7 @@ def hybrid_sort(arr, K):
         return insertion_sort(arr)
     else:
         mid = len(arr) // 2
-        left = hybrid_sort(arr[:mid], K)
+        left = hybrid_sort(arr[:mid-1], K)
         right = hybrid_sort(arr[mid:], K)
         return merge(left, right)
 
