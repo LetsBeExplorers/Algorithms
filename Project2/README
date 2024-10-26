@@ -1,0 +1,17 @@
+CS5720 Project1 Fall2024: Hybrid Sorting
+To generate my CS 5720 Project 2, complete the following steps:
+
+1. Download all the files into the same directory
+2. Make the project2.sh file executable
+	chmod 777 project2.sh
+3. Run project1.sh
+	./project1.sh
+
+This assumes you have a Python 3.x environment with numpy and matplotlib, and that you have LaTeX on your system with the required libraries.
+ 
+The completed PDF is generated as CS5720Project2.pdf.
+
+Files
+project2.sh: shell commands to generate the completed project
+main.py: the source code for the image files
+CS5720Project2.txt: the LaTeX code for generating the PDF document
