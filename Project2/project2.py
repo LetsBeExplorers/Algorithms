@@ -103,7 +103,7 @@ print("Test Results successfully written to file: test.txt")
 # ***Deliverable 2***
 
 # Function to run time experiments
-def run_time_experiment(K_values, n_values, num_trials=10, sorted_input=False):
+def run_time_experiment(K_values, n_values, num_trials=5, sorted_input=False):
     avg_times = {n: [] for n in n_values}
     for n in n_values:
         for K in K_values:
@@ -148,8 +148,8 @@ def plot_optimal_k(optimal_ks, n_values, filename):
     plt.close()
 
 # Experiment settings
-K_values = list(range(2, 101, 5))  # K from 2 to 50 with step 5
-n_values = [5000, 10000, 20000, 50000, 100000]  # Array lengths
+K_values = list(range(2, 201, 10))  # K from 2 to 200 with step size 10
+n_values = [5000, 10000, 25000, 50000, 100000]  # Array lengths
 
 # 1. Run experiments on random arrays
 avg_times_random = run_time_experiment(K_values, n_values)
