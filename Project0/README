@@ -14,4 +14,4 @@ The completed PDF is generated as CS5720Project0.pdf.
 Files
 project0.sh: shell commands to generate the completed project
 main.py: the source code for the image files
-CS5720Project0.txt: the LaTeX code for generating the PDF document
+CS5720Project0.tex: the LaTeX code for generating the PDF document
