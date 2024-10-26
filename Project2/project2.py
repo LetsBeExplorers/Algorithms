@@ -145,29 +145,29 @@ def plot_optimal_k(optimal_ks, n_values, filename):
     plt.close()
 
 # Example experiment settings
-K_values = list(range(2, 51, 5))  # K from 2 to 50 with step 5
-n_values = [1000, 5000, 10000, 20000]  # Array lengths
+#K_values = list(range(2, 51, 5))  # K from 2 to 50 with step 5
+#n_values = [1000, 5000, 10000, 20000]  # Array lengths
 
 # 1. Run experiments on random arrays
-avg_times_random = run_time_experiment(K_values, n_values)
+#avg_times_random = run_time_experiment(K_values, n_values)
 
 # Save the plot for random array results
-plot_results(avg_times_random, K_values, n_values, "random_results.png", "Average Running Time on Random Arrays")
+#plot_results(avg_times_random, K_values, n_values, "random_results.png", "Average Running Time on Random Arrays")
 
 # 2. Identify optimal K for each n on random arrays
-optimal_ks_random = find_optimal_k(avg_times_random, K_values, n_values)
+#optimal_ks_random = find_optimal_k(avg_times_random, K_values, n_values)
 
 # Save the plot for optimal K on random arrays
-plot_optimal_k(optimal_ks_random, n_values, "optimal_k.png")
+#plot_optimal_k(optimal_ks_random, n_values, "optimal_k.png")
 
 # 3. Run experiments on sorted arrays
-avg_times_sorted = run_time_experiment(K_values, n_values, sorted_input=True)
+#avg_times_sorted = run_time_experiment(K_values, n_values, sorted_input=True)
 
 # Save the plot for sorted array results
-plot_results(avg_times_sorted, K_values, n_values, "sorted_results.png", "Average Running Time on Sorted Arrays")
+#plot_results(avg_times_sorted, K_values, n_values, "sorted_results.png", "Average Running Time on Sorted Arrays")
 
 # 4. Identify optimal K for sorted arrays
-optimal_ks_sorted = find_optimal_k(avg_times_sorted, K_values, n_values)
+#optimal_ks_sorted = find_optimal_k(avg_times_sorted, K_values, n_values)
 
 # Save the plot for optimal K on sorted arrays
-plot_optimal_k(optimal_ks_sorted, n_values, "optimal_k_sorted.png")
+#plot_optimal_k(optimal_ks_sorted, n_values, "optimal_k_sorted.png")
