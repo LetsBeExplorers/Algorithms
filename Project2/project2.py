@@ -135,8 +135,8 @@ def plot_results(avg_times, K_values, n_values, filename, title):
     plt.xlabel("K")
     plt.ylabel("Average Running Time (seconds)")
     plt.title(title)
-    plt.legend()
-    plt.savefig(filename)
+    plt.legend(loc=9, bbox_to_anchor=(1.15,0.75))
+    plt.savefig(filename, bbox_inches='tight')
     plt.close()
 
 def plot_optimal_k(optimal_ks, n_values, filename):
