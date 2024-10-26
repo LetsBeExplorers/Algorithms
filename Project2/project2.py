@@ -2,6 +2,8 @@ import random
 import time
 import matplotlib.pyplot as plt
 
+# ***Start of Deliverable 1***
+
 # Insertion sort implementation
 def insertion_sort(arr):
     n = len(arr)
@@ -56,6 +58,33 @@ def hybrid_sort(arr, K):
         left = hybrid_sort(arr[:mid-1], K)
         right = hybrid_sort(arr[mid:], K)
         return merge(left, right)
+
+# generates a random array of integers (random length) for sorting
+def newIntArray():
+    ints = []
+    upperLimit = random.randint(1,50)
+    for i in range(1, upperLimit):
+        ints.append(randint(0,100))
+    return ints
+
+# Confirm the results of my Search algorithm match the built in Python function
+# Runs both functions through a series of tests and returns a pass/fail result
+def verificationTest(A, K):
+
+
+# test sorting algorithm against python sorting alogrithm
+# append test results to a file
+
+with open("test.txt", "a") as file:
+    sys.stdout = file # send stdout to a file
+    for i in range(0,5):
+        verificationTest(newIntArray(), randint(5,25)) # random values of K
+        print()
+
+sys.stdout = sys.__stdout__  # Reset standard output
+print("Test Results successfully written to file: test.txt")
+
+# ***End of Deliverable 1***
 
 # Function to run time experiments
 def run_time_experiment(K_values, n_values, num_trials=5, sorted_input=False):
