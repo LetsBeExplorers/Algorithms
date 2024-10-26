@@ -3,7 +3,7 @@ import time
 import sys
 import matplotlib.pyplot as plt
 
-# ***Start of Deliverable 1***
+# ***Deliverable 1***
 
 # Insertion sort implementation
 def InsertionSort(arr):
@@ -62,10 +62,9 @@ def HybridSort(arr, K):
         return Merge(left, right)
 
 # generates a random array of integers (random length) for sorting
-def newIntArray():
+def newIntArray(n):
     ints = []
-    upperLimit = random.randint(10,50)
-    for i in range(1, upperLimit):
+    for i in range(1, n):
         ints.append(random.randint(0,100))
     return ints
 
@@ -93,7 +92,7 @@ def verificationTest(A, K):
 with open("test.txt", "a") as file:
     sys.stdout = file # send stdout to a file
     for i in range(0,5):
-        verificationTest(newIntArray(), 5) # set K to 5 for testing
+        verificationTest(newIntArray(random.randint(10,50)), 5) # set K to 5 for testing
         print()
 
 sys.stdout = sys.__stdout__  # Reset standard output
@@ -101,13 +100,15 @@ print("Test Results successfully written to file: test.txt")
 
 # ***End of Deliverable 1***
 
+# ***Deliverable 2***
+
 # Function to run time experiments
 def run_time_experiment(K_values, n_values, num_trials=5, sorted_input=False):
     avg_times = {n: [] for n in n_values}
     for n in n_values:
         for K in K_values:
             total_time = 0
-            for _ in range(num_trials):
+            for i in range(num_trials):
                 if sorted_input:
                     arr = sorted(random.sample(range(1000000), n))
                 else:
