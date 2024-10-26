@@ -119,15 +119,6 @@ def run_time_experiment(K_values, n_values, num_trials=5, sorted_input=False):
             avg_times[n].append(total_time / num_trials)
     return avg_times
 
-# Finding optimal K for different n values
-def find_optimal_k(avg_times, K_values, n_values):
-    optimal_ks = []
-    for n in n_values:
-        min_time = min(avg_times[n])
-        optimal_k = K_values[avg_times[n].index(min_time)]
-        optimal_ks.append(optimal_k)
-    return optimal_ks
-
 # Plotting functions
 def plot_results(avg_times, K_values, n_values, filename, title):
     for n in n_values:
@@ -157,6 +148,19 @@ avg_times_random = run_time_experiment(K_values, n_values)
 # Save the plot for random array results
 plot_results(avg_times_random, K_values, n_values, "random_results.png", "Average Running Time on Random Arrays")
 print("Timed Results successfully plotted in file: random_results.png")
+
+# ***End of Deliverable 2***
+
+# ***Deliverable 23***
+
+# Finding optimal K for different n values
+def find_optimal_k(avg_times, K_values, n_values):
+    optimal_ks = []
+    for n in n_values:
+        min_time = min(avg_times[n])
+        optimal_k = K_values[avg_times[n].index(min_time)]
+        optimal_ks.append(optimal_k)
+    return optimal_ks
 
 # 2. Identify optimal K for each n on random arrays
 #optimal_ks_random = find_optimal_k(avg_times_random, K_values, n_values)
