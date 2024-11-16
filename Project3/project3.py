@@ -19,28 +19,27 @@ def knapsack_bottom_up(weights, values, capacity):
     return dp[n][capacity]
 
 # Knapsack top-down with memoization dynamic programming implementation
-# algorithm is from GeeksforGeeks with a few adjustments
-def knapsack_top_down(wt, val, W, n):
+# algorithm is from GeeksforGeeks with a few adjustments, including new variable names
+def knapsack_top_down(weights, val, capacity, n):
     # Initialize the matrix with -1 at first
-    t = [[-1 for i in range(W + 1)] for j in range(n + 1)]
+    memo = [[-1 for i in range(capacity + 1)] for j in range(n + 1)]
 
-    def knapsack(wt, val, W, n): 
+    def knapsack(weights, values, capacity, n): 
         # base conditions
-        if n == 0 or W == 0:
+        if n == 0 or capacity == 0:
             return 0
-        if t[n][W] != -1:
-            return t[n][W]
+        if memo[n][capacity] != -1:
+            return memo[n][capacity]
 
         # choice diagram code
-        if wt[n-1] <= W:
-            t[n][W] = max(
-                val[n-1] + knapsack(wt, val, W-wt[n-1], n-1), knapsack(wt, val, W, n-1))
-            return t[n][W]
-        elif wt[n-1] > W:
-            t[n][W] = knapsack(wt, val, W, n-1)
-            return t[n][W]
+        if weights[n-1] <= capacity:
+            memo[n][capacity] = max(values[n-1] + knapsack(weights, values, capacity-weights[n-1], n-1), knapsack(weights, values, capacity, n-1))
+            return memo[n][capacity]
+        elif weights[n-1] > capacity:
+            memo[n][capacity] = knapsack(weights, values, capacity, n-1)
+            return memo[n][capacity]
 
-    return knapsack(wt, val, W, n)
+    return knapsack(weights, values, capacity, n)
 
 # Function to measure execution time for random inputs
 def measure_execution_times(n_values, capacity_values):
