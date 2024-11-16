@@ -20,7 +20,7 @@ def knapsack_bottom_up(weights, values, capacity):
 
 # Knapsack top-down with memoization dynamic programming implementation
 # algorithm is from GeeksforGeeks with a few adjustments, including new variable names
-def knapsack_top_down(weights, val, capacity, n):
+def knapsack_top_down(weights, values, capacity, n):
     # Initialize the matrix with -1 at first
     memo = [[-1 for i in range(capacity + 1)] for j in range(n + 1)]
 
