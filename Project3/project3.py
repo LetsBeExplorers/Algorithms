@@ -2,6 +2,8 @@ import time
 import numpy as np
 import matplotlib.pyplot as plt
 
+# ***Start of Deliverable 1***
+
 # Knapsack bottom-up dynamic programming implementation
 def knapsack_bottom_up(weights, values, capacity):
     n = len(weights)
@@ -17,24 +19,28 @@ def knapsack_bottom_up(weights, values, capacity):
     return dp[n][capacity]
 
 # Knapsack top-down with memoization dynamic programming implementation
-def knapsack_top_down(weights, values, capacity):
-    n = len(weights)
-    memo = {}
-    
-    def helper(i, w):
-        if (i, w) in memo:
-            return memo[(i, w)]
-        if i == 0 or w == 0:
-            result = 0
-        elif weights[i - 1] <= w:
-            result = max(helper(i - 1, w), helper(i - 1, w - weights[i - 1]) + values[i - 1])
-        else:
-            result = helper(i - 1, w)
-        
-        memo[(i, w)] = result
-        return result
-    
-    return helper(n, capacity)
+# algorithm is from GeeksforGeeks with a few adjustments
+def knapsack_top_down(wt, val, W, n):
+    # Initialize the matrix with -1 at first
+    t = [[-1 for i in range(W + 1)] for j in range(n + 1)]
+
+    def knapsack(wt, val, W, n): 
+        # base conditions
+        if n == 0 or W == 0:
+            return 0
+        if t[n][W] != -1:
+            return t[n][W]
+
+        # choice diagram code
+        if wt[n-1] <= W:
+            t[n][W] = max(
+                val[n-1] + knapsack(wt, val, W-wt[n-1], n-1), knapsack(wt, val, W, n-1))
+            return t[n][W]
+        elif wt[n-1] > W:
+            t[n][W] = knapsack(wt, val, W, n-1)
+            return t[n][W]
+
+    return knapsack(wt, val, W, n)
 
 # Function to measure execution time for random inputs
 def measure_execution_times(n_values, capacity_values):
@@ -51,13 +57,13 @@ def measure_execution_times(n_values, capacity_values):
         for capacity in capacity_values:
             # Measure bottom-up execution time
             start_time = time.time()
-            knapsack_bottom_up(weights, values, capacity)
+            knapsack_bottom_up(weights, values, capacity, len(values))
             end_time = time.time()
             bottom_up_n_times.append(end_time - start_time)
             
             # Measure top-down execution time
             start_time = time.time()
-            knapsack_top_down(weights, values, capacity)
+            knapsack_top_down(weights, values, capacity, len(values))
             end_time = time.time()
             top_down_n_times.append(end_time - start_time)
         
@@ -95,13 +101,13 @@ def measure_execution_times_low_weights(n_values, capacity_values):
         for capacity in capacity_values:
             # Measure bottom-up execution time
             start_time = time.time()
-            knapsack_bottom_up(weights, values, capacity)
+            knapsack_bottom_up(weights, values, capacity, len(values))
             end_time = time.time()
             bottom_up_n_times.append(end_time - start_time)
             
             # Measure top-down execution time
             start_time = time.time()
-            knapsack_top_down(weights, values, capacity)
+            knapsack_top_down(weights, values, capacity, len(values))
             end_time = time.time()
             top_down_n_times.append(end_time - start_time)
         
@@ -136,13 +142,13 @@ def measure_execution_time_representation(n, max_capacity_exponent):
     for capacity in capacities:
         # Measure bottom-up execution time
         start_time = time.time()
-        knapsack_bottom_up(weights, values, capacity)
+        knapsack_bottom_up(weights, values, capacity, len(values))
         end_time = time.time()
         bottom_up_times.append(end_time - start_time)
         
         # Measure top-down execution time
         start_time = time.time()
-        knapsack_top_down(weights, values, capacity)
+        knapsack_top_down(weights, values, capacity, len(values))
         end_time = time.time()
         top_down_times.append(end_time - start_time)
     
