@@ -250,3 +250,45 @@ for n in n_values:
     plot_performance_fixedn(n, bottom_up_times_n_smallwts, top_down_times_n_smallwts, True)
 
 print("Fixed-n timed tests with small weights successfully written to files")
+
+#***End of Deliverable 3***
+
+#***Start of Deliverable 4***
+# Function to measure execution time with varying representations of W
+def measure_execution_time_representation(n, max_capacity_exponent):
+    bottom_up_times = []
+    top_down_times = []
+    capacities = [2**exp for exp in range(1, max_capacity_exponent + 1)]
+    
+    weights = np.random.randint(1, 20, n).tolist()
+    values = np.random.randint(1, 100, n).tolist()
+    
+    for capacity in capacities:
+            # Measure execution times
+            bu_time, td_time = measure_execution_times(weights, values, capacity)
+            bottom_up_times.append(bu_time)
+            top_down_times.append(td_time)
+    
+    return capacities, bottom_up_times, top_down_times
+
+# Plotting pseudopolynomial-time complexity
+def plot_pseudopolynomial_complexity(capacities, bottom_up_times_repr, top_down_times_repr):
+    fig, ax = plt.subplots(figsize=(10, 6))
+    ax.plot(np.log2(capacities), bottom_up_times_repr, label='Bottom-Up', linestyle='-', marker='o')
+    ax.plot(np.log2(capacities), top_down_times_repr, label='Top-Down', linestyle='--', marker='x')
+    ax.set_xlabel('Log(Size of Representation of W)')
+    ax.set_ylabel('Execution Time (seconds)')
+    ax.set_title('Pseudopolynomial-Time Complexity of Knapsack Algorithms')
+    ax.legend()
+    plt.grid(True)
+    plt.savefig('plot_pseudopolynomial.png')
+    plt.close(fig)
+
+n = 20  # Fixed number of items for pseudopolynomial test
+max_capacity_exponent = 10  # Max exponent for 2^W in pseudopolynomial test
+
+capacities, bottom_up_times_repr, top_down_times_repr = measure_execution_time_representation(n, max_capacity_exponent)
+plot_pseudopolynomial_complexity(capacities, bottom_up_times_repr, top_down_times_repr)
+
+print("Pseudopolynomial plot successfully written to file")
+#***End of Deliverable 3***
