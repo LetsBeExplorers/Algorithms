@@ -72,13 +72,13 @@ def verificationTest(wts, vals, cap):
     try:
         assert kbu == ktd, "Failed"
         print("Passed")
-        print("Bottom-Up = ", knapsack_bottom_up(wts, vals, cap))
-        print("Top-Down = ", knapsack_top_down(wts, vals, cap, len(vals)))
+        print("Bottom-Up = ", kbu)
+        print("Top-Down = ", ktd)
     except AssertionError:
         print("Failed")
         print("K =",K)
-        print("Bottom-Up = ", knapsack_bottom_up(wts, vals, cap))
-        print("Top-Down = ", knapsack_top_down(wts, vals, cap, len(vals)))
+        print("Bottom-Up = ", kbu)
+        print("Top-Down = ", ktd)
 
 # test knapsack algorithms and append test results to a file
 with open("test.txt", "a") as file:
