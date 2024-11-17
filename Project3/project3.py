@@ -88,5 +88,112 @@ with open("test.txt", "a") as file:
         verificationTest(newIntArray(length), newIntArray(length), random.randint(0,50))
         print()
 
+sys.stdout = sys.__stdout__  # Reset standard output
+print("Test Results successfully written to file: test.txt")
+
 #***End of Deliverable 1***
 
+#***Start of Deliverable 2***
+
+# generates a random array of integers under a given value
+def newIntArrayCeiling(n, W):
+    ints = []
+    for i in range(0, n):
+        ints.append(random.randint(1,W+1))
+    return ints
+
+# Function to measure execution time for random inputs
+def test_execution_times(value, fixedW=True):
+    bottom_up_times = []
+    top_down_times = []
+    
+    if fixedW:
+        capacity = value
+        for n in range(1, n_top+1):
+            weights = newIntArrayCeiling(n, capacity)
+            values = newIntArrayCeiling(n, 25)
+
+            # Measure execution times
+            bu_time, td_time = measure_execution_times(weights, values, capacity)
+            bottom_up_times.append(bu_time)
+            top_down_times.append(td_time)
+
+    # fixed n
+    else: 
+        n = value
+        for capacity in range(50, capacity_top+1, 5):
+            weights = newIntArrayCeiling(n, capacity)
+            values = newIntArrayCeiling(n, 25)
+
+            # Measure execution times
+            bu_time, td_time = measure_execution_times(weights, values, capacity)
+            bottom_up_times.append(bu_time)
+            top_down_times.append(td_time)
+    
+    return bottom_up_times, top_down_times
+
+# Function to measure execution time of both algorithms
+def measure_execution_times(weights, values, capacity):
+    # Measure bottom-up execution time
+    start_time = time.time()
+    knapsack_bottom_up(weights, values, capacity)
+    end_time = time.time()
+    bottom_up_time = end_time - start_time
+        
+    # Measure top-down execution time
+    start_time = time.time()
+    knapsack_top_down(weights, values, capacity, len(values))
+    end_time = time.time()
+    top_down_time = end_time - start_time
+
+    return bottom_up_time, top_down_time
+
+# Plotting random input performance for fixed W
+def plot_performance_fixedW(capacity, bottom_up_times, top_down_times):
+    fig, ax = plt.subplots(figsize=(10, 6))
+    ax.plot(range(1, n_top+1), bottom_up_times, label=f'Bottom-Up')
+    ax.plot(range(1, n_top+1), top_down_times, label=f'Top-Down')
+    ax.set_xlabel('n values')
+    ax.set_ylabel('Execution Time (seconds)')
+    ax.set_title('Execution Time of Knapsack Algorithms for Capacity = ' + str(capacity))
+    ax.legend()
+    plt.grid(True)
+    plt.savefig('plot_fixedW_'+ str(capacity) + '.png')
+    plt.close(fig)
+
+# Plotting random input performance for fixed n
+def plot_performance_fixedn(n, bottom_up_times, top_down_times):
+    fig, ax = plt.subplots(figsize=(10, 6))
+    ax.plot(range(50, capacity_top+1, 5), bottom_up_times, label=f'Bottom-Up')
+    ax.plot(range(50, capacity_top+1, 5), top_down_times, label=f'Top-Down')
+    ax.set_xlabel('capacity values')
+    ax.set_ylabel('Execution Time (seconds)')
+    ax.set_title('Execution Time of Knapsack Algorithms for n = ' + str(n))
+    ax.legend()
+    plt.grid(True)
+    plt.savefig('plot_fixedn_'+ str(n) + '.png')
+    plt.close(fig)
+
+# Fixed test parameters
+n_values = [10, 25, 50, 100]
+capacity_values = [50, 250, 500]
+
+# Generate data and plots for fixed W
+for capacity in capacity_values:
+    n_top = 100
+    bottom_up_times_W, top_down_times_W = test_execution_times(capacity)
+    plot_performance_fixedW(capacity, bottom_up_times_W, top_down_times_W)
+
+print("Fixed-W timed tests successfully written to files")
+
+# Generate data and plots for fixed n
+for n in n_values:
+    capacity_top = 500
+    bottom_up_times_n, top_down_times_n = test_execution_times(n, False)
+    plot_performance_fixedn(n, bottom_up_times_n, top_down_times_n)
+
+print("Fixed-n timed tests successfully written to files")
+
+#***End of Deliverable 2***
+
+#***Start of Deliverable 3***
