@@ -1,0 +1,18 @@
+CS5720 Project1 Fall2024: MST Algos
+To generate my CS 5720 Project 4, complete the following steps:
+
+1. Download all the files into the same directory
+2. Make the project4.sh file executable
+	chmod 777 project4.sh
+3. Run project4.sh
+	./project4.sh
+
+This assumes you have a Python 3.x environment with numpy and matplotlib, and that you have LaTeX on your system with the required libraries.
+ 
+The completed PDF is generated as CS5720Project4.pdf.
+
+Files
+project4.sh: shell commands to generate the completed project
+project4.py: the source code for the project
+CS5720Project4.tex: the LaTeX code for generating the PDF document
+Screenshots: screenshots showing testing was successfully completed
