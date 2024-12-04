@@ -21,22 +21,38 @@ def graph_relationship(edges, nodes, type):
     plt.savefig("edge_vertex_relationship_"+ type)
     plt.close()
 
-# Prim's Algorithm (Adjacency List + Unordered Heap Priority Queue)
+# Prim's Algorithm (Adjacency Matrix + Unordered Priority Queue)
 def prim_mst(matrix):
-    num_nodes = len(matrix)
-    visited = [False] * num_nodes
-    total_weight = 0
-    edges = [(0, 0)]
-    while edges:
-        weight, node = heappop(edges)
-        if visited[node]:
+    n = len(matrix)  # Number of vertices
+    visited = [False] * n   # Track visited nodes
+    mst_weight = 0          # Total weight of the MST
+    edge_list = []          # Unordered array-based priority queue
+
+    # Start from the first node (index 0)
+    visited[0] = True
+    for j in range(n):
+        if matrix[0][j] != -1:  # Add all edges from the first node
+            edge_list.append((matrix[0][j], 0, j))  # (weight, from, to)
+
+    while edge_list:
+        # Find the minimum weight edge in the unordered edge list
+        min_weight, u, v = min(edge_list, key=lambda x: x[0])
+        edge_list.remove((min_weight, u, v))  # Remove the selected edge from the list
+
+        # Skip if the target node is already visited
+        if visited[v]:
             continue
-        total_weight += weight
-        visited[node] = True
-        for neighbor in range(num_nodes):
-            if not visited[neighbor] and matrix[node][neighbor] != -1:
-                heappush(edges, (matrix[node][neighbor], neighbor))
-    return total_weight
+
+        # Add the edge to the MST
+        mst_weight += min_weight
+        visited[v] = True
+
+        # Add all edges from the newly added vertex
+        for w in range(n):
+            if not visited[w] and matrix[v][w] != -1:
+                edge_list.append((matrix[v][w], v, w))
+
+    return mst_weight
 
 # Kruskal's Algorithm
 def kruskal_mst(matrix):
