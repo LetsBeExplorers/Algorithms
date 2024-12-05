@@ -156,12 +156,24 @@ for graph_type in ["type-1", "type-2", "type-3"]:
     subset = results_df[results_df["Graph"].str.contains(graph_type)]
 
     plt.figure()
-    plt.title(f"Timing Analysis: {graph_type}")
+    plt.title(f"Prim's Timing Analysis: {graph_type}")
     plt.plot(subset["Graph"], subset["Prim Time"], label="Prim")
-    plt.plot(subset["Graph"], subset["Kruskal Time"], label="Kruskal")
+    plt.plot(subset["Graph"], subset["Vsquared"], label="VSquared", color="red")
     plt.xlabel("Graph")
     plt.ylabel("Time (s)")
     plt.legend()
-    plt.xticks(rotation=45, fontsize=8)
+    plt.xticks(rotation=75, fontsize=8)
     plt.tight_layout()
-    plt.savefig(f"timing-analysis-{graph_type}.png")
+    plt.savefig(f"timing-analysis-Prim-{graph_type}.png")
+
+    plt.figure()
+    plt.title(f"Kruskal's Timing Analysis: {graph_type}")
+    plt.plot(subset["Graph"], subset["Kruskal Time"], label="Kruskal", color="orange")
+    plt.plot(subset["Graph"], subset["ElogE"], label="ElogE", color="green")
+    plt.xlabel("Graph")
+    plt.ylabel("Time (s)")
+    plt.legend()
+    plt.xticks(rotation=75, fontsize=8)
+    plt.tight_layout()
+    plt.savefig(f"timing-analysis-Kruskal-{graph_type}.png")
+
