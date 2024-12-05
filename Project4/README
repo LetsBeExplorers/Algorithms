@@ -15,4 +15,4 @@ Files
 project4.sh: shell commands to generate the completed project
 project4.py: the source code for the project
 CS5720Project4.tex: the LaTeX code for generating the PDF document
-Screenshots: screenshots showing testing was successfully completed
+Graphs: undirected graphs for analysis
