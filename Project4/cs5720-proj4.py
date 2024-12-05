@@ -137,10 +137,10 @@ for graph_type in ["type-1", "type-2", "type-3"]:
             results["ElogE"].append((edges*math.log(edges))/10000000)
         elif graph_type == "type-2":
             results["Vsquared"].append((nodes*nodes)/150000)
-            results["ElogE"].append((edges*math.log(edges))/5000000)
+            results["ElogE"].append((edges*math.log(edges))/6000000)
         elif graph_type == "type-3":
             results["Vsquared"].append((nodes*nodes)/4500000)
-            results["ElogE"].append((edges*math.log(edges))/800000)
+            results["ElogE"].append((edges*math.log(edges))/900000)
 
 
     graph_relationship(edge_set, node_set, graph_type)
