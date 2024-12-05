@@ -127,17 +127,7 @@ results_df.to_csv("graph-analysis-results.csv", index=False)
 # Plotting
 for graph_type in ["type-1", "type-2", "type-3"]:
     subset = results_df[results_df["Graph"].str.contains(graph_type)]
-    plt.figure()
-    plt.title(f"MST Weights: {graph_type}")
-    plt.plot(subset["Graph"], subset["Prim MST"], label="Prim")
-    plt.plot(subset["Graph"], subset["Kruskal MST"], label="Kruskal")
-    plt.xlabel("Graph")
-    plt.ylabel("MST Weight")
-    plt.legend()
-    plt.xticks(rotation=45, fontsize=8)
-    plt.tight_layout()
-    plt.savefig(f"mst-weights-{graph_type}.png")
-
+    
     plt.figure()
     plt.title(f"Timing Analysis: {graph_type}")
     plt.plot(subset["Graph"], subset["Prim Time"], label="Prim")
