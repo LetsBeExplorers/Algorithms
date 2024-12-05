@@ -32,6 +32,7 @@ def graph_relationship_max(edges, nodes, max_edges, type):
     plt.close()
 
 # Prim's Algorithm (Adjacency Matrix + Unordered Priority Queue)
+# Algorithm came from the internet, just made a few changes to account for the -1's
 def prim_mst(matrix):
     n = len(matrix)  # Number of vertices
     visited = [False] * n   # Track visited nodes
