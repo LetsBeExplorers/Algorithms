@@ -250,10 +250,32 @@ A scaled version of $|V|^2$ was included on Figures 7, 8, and 9 for comparison (
 \caption{Kruskal's Timing Analysis for Type 3 Graphs.}
 \end{figure}
 
-Figures 10 and 11 show that Kruskal's algorithm was not only faster than Prim's, but that it clearly resulted in the expected time complexity of $\Theta(E\log E)$ for types-1 and 2. Figure 12, which shows our type-3 runtimes, seems like it might have quadratic time complexity, but that would still exceed $\Theta(E\log E)$ as requested.
+Figures 10 and 11 show that Kruskal's algorithm was not only faster than Prim's, but that it clearly resulted in the expected time complexity of $\Theta(E\log E)$ for types-1 and 2. 
+
+Our type-3 graphs in Figure 12 appear to have quadratic time complexity - $\Theta(|V|^2)$. This does not match what was found in Homework 8 for Kruskal's algorithm in general, but it does still exceed $\Theta(E\log E)$ as requested.
 
 A scaled version of $E\log E$ was included on Figures 10, 11, and 12 for comparison (green line). These lines show that the time complexity of our implementation either met or exceeded $\Theta(E\log E)$.
 
+\subsection*{Estimates}
+Time Complexity estimates are summarized below:
+
+\vspace{.5cm}
+\begin{table}[h!]
+\centering
+\begin{tabular}{lrr}
+\toprule
+\textbf{Graph Type} & \textbf{Prim's} & \textbf{Kruskal's} \\
+\midrule
+Type 1 & $\Theta(e^{|V|})$ & $\Theta(E\log E)$ \\
+\hline
+Type 2 & $\Theta(|V|^2)$ & $\Theta(E\log E)$ \\
+\hline
+Type 3 & $\Theta(|V|^2)$ & $\Theta(|V|^2)$ \\
+\bottomrule
+\end{tabular}
+\caption{Time Complexity Estimates for all graphs.}
+\label{tab:tc_graphs}
+\end{table}
 
 \section*{Conclusion}
 This project demonstrated the implementation and analysis of MST algorithms across graph types. The results mostly aligned with theoretical expectations, and empirical findings provided deeper insights into algorithm performance.
