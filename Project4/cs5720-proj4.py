@@ -27,7 +27,7 @@ def graph_relationship_max(edges, nodes, max_edges, type):
     plt.plot(nodes, max_edges, linestyle='None', marker='o', color='red')
     plt.ylabel("Number of Edges")
     plt.xlabel("Number of Vertices")
-    plt.title("Relationship between The Number of Edges and Nodes Compared to Max Edges: " + type)
+    plt.title("Edges/Nodes Relationship Compared to Max Edges: " + type)
     plt.savefig("edge_vertex_max_relationship_"+ type)
     plt.close()
 
