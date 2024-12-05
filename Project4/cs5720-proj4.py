@@ -2,8 +2,8 @@ import os
 import pandas as pd
 import numpy as np
 import time
+import math
 import matplotlib.pyplot as plt
-from heapq import heappop, heappush
 
 # Load graphs and perform basic analysis
 def count_nodes_and_edges(file_path):
@@ -101,13 +101,15 @@ def timing_analysis(func, matrix):
 
 # Paths and Setup
 data_path = "graphs"
-results = {"Graph": [], "Nodes": [], "Edges": [], "Prim MST": [], "Kruskal MST": [], "Prim Time": [], "Kruskal Time": []}
+results = {"Graph": [], "Nodes": [], "Edges": [], "Prim MST": [], "Kruskal MST": [], "Prim Time": [], "Kruskal Time": [], "Vsquared": [], "ElogE": []}
 
 for graph_type in ["type-1", "type-2", "type-3"]:
     type_path = os.path.join(data_path, graph_type.replace("-", "_"))
     node_set = []
     edge_set = []
+
     max_edges = []
+
     for file_name in os.listdir(type_path):
         graph_path = os.path.join(type_path, file_name)
         graph_matrix = pd.read_csv(graph_path, header=None).to_numpy()
@@ -129,6 +131,17 @@ for graph_type in ["type-1", "type-2", "type-3"]:
         results["Kruskal MST"].append(kruskal_weight)
         results["Prim Time"].append(prim_time)
         results["Kruskal Time"].append(kruskal_time)
+
+        if graph_type == "type-1":
+            results["Vsquared"].append((nodes*nodes)/150000)
+            results["ElogE"].append((edges*math.log(edges))/10000000)
+        elif graph_type == "type-2":
+            results["Vsquared"].append((nodes*nodes)/150000)
+            results["ElogE"].append((edges*math.log(edges))/5000000)
+        elif graph_type == "type-3":
+            results["Vsquared"].append((nodes*nodes)/4500000)
+            results["ElogE"].append((edges*math.log(edges))/800000)
+
 
     graph_relationship(edge_set, node_set, graph_type)
     graph_relationship_max(edge_set, node_set, max_edges, graph_type)
