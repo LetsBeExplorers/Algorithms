@@ -21,6 +21,16 @@ def graph_relationship(edges, nodes, type):
     plt.savefig("edge_vertex_relationship_"+ type)
     plt.close()
 
+# graphs the relationship between the size of the node and edge sets as compared to the max number of edges possible
+def graph_relationship_max(edges, nodes, max_edges, type):
+    plt.plot(edges, nodes, linestyle='None', marker='o')
+    plt.plot(max_edges, nodes, linestyle='None', marker='o', color='red')
+    plt.xlabel("Number of Edges")
+    plt.ylabel("Number of Vertices")
+    plt.title("Relationship between The Number of Edges and Nodes Compared to Max Edges: " + type)
+    plt.savefig("edge_vertex_max_relationship_"+ type)
+    plt.close()
+
 # Prim's Algorithm (Adjacency Matrix + Unordered Priority Queue)
 def prim_mst(matrix):
     n = len(matrix)  # Number of vertices
@@ -97,6 +107,7 @@ for graph_type in ["type-1", "type-2", "type-3"]:
     type_path = os.path.join(data_path, graph_type.replace("-", "_"))
     node_set = []
     edge_set = []
+    max_edges = []
     for file_name in os.listdir(type_path):
         graph_path = os.path.join(type_path, file_name)
         graph_matrix = pd.read_csv(graph_path, header=None).to_numpy()
@@ -104,6 +115,7 @@ for graph_type in ["type-1", "type-2", "type-3"]:
         nodes, edges = count_nodes_and_edges(graph_path)
         node_set.append(nodes)
         edge_set.append(edges)
+        max_edges.append(0.5*nodes*(nodes-1))
         
         prim_weight = prim_mst(graph_matrix)
         kruskal_weight = kruskal_mst(graph_matrix)
@@ -119,15 +131,17 @@ for graph_type in ["type-1", "type-2", "type-3"]:
         results["Kruskal Time"].append(kruskal_time)
 
     graph_relationship(edge_set, node_set, graph_type)
+    graph_relationship_max(edge_set, node_set, max_edges, graph_type)
 
 # Save Results
 results_df = pd.DataFrame(results)
+results_df = results_df.sort_values(by="Graph")
 results_df.to_csv("graph-analysis-results.csv", index=False)
 
 # Plotting
 for graph_type in ["type-1", "type-2", "type-3"]:
     subset = results_df[results_df["Graph"].str.contains(graph_type)]
-    
+
     plt.figure()
     plt.title(f"Timing Analysis: {graph_type}")
     plt.plot(subset["Graph"], subset["Prim Time"], label="Prim")
