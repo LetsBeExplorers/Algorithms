@@ -1,0 +1,261 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage{amsmath}
+
+\geometry{margin=1in}
+
+\title{CS5720 Project 4: Minimum Spanning Tree Analysis}
+\author{Rachel Koch}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Attributions}
+
+ChatGPT file changes: \textit{cs5720-proj4.py}
+\begin{quote}
+    Removed classify\_graph\_type() function \\
+    Added graphing of vertices/edges to determine density \\
+    Added graphs showing max number of edges for density \\
+    Prim's algorithm implementation doesn't use heap anymore \\
+    Results get sorted by graph name in the dataframe \\
+    Removed graphing of the MST weights \\
+    Kruskal's/Prim's runtimes are plotted separately \\
+    Added V-squared line to Prim's plots \\
+    Added ElogE line on Kruskal's plots
+\end{quote}
+ChatGPT file changes: \textit{Project4-GPT-FA24.tex}
+\begin{quote}
+    Changed the name of the file \\
+    Added nodes and edges for all the graphs \\
+    Removed density equation in Deliverable 2 \\
+    Added vertex/edge density graphs to Deliverable 2 \\
+    Added table showing MST weights to Deliverable 3 \\
+    New graphs for Deliverable 4 \\
+    Prim's and Kruskal's graphs are separate \\
+    Added estimation/discussion of runtimes
+\end{quote}
+
+
+\section*{Introduction}
+This report presents the analysis of 30 graphs categorized into three types. The tasks include:
+\begin{itemize}
+    \item Counting nodes and edges.
+    \item Classifying graphs as sparse or dense.
+    \item Computing the Minimum Spanning Tree (MST) using Prim's and Kruskal's algorithms.
+    \item Empirically analyzing and comparing algorithm performance.
+\end{itemize}
+
+\newpage
+\section*{Deliverable 1: Node and Edge Counts}
+The following table summarizes the number of nodes and edges for each graph:
+\vspace{.5cm}
+\begin{table}[h!]
+\centering
+\begin{tabular}{lrr}
+\toprule
+\textbf{Graph} & \textbf{Nodes} & \textbf{Edges} \\
+\midrule
+Type 1 - t1\_graph\_0.csv & 10 & 17 \\
+Type 1 - t1\_graph\_1.csv & 20 & 106 \\
+Type 1 - t1\_graph\_2.csv & 30 & 299 \\
+Type 1 - t1\_graph\_3.csv & 40 & 584 \\
+Type 1 - t1\_graph\_4.csv & 50 & 971 \\
+Type 1 - t1\_graph\_5.csv & 60 & 1447 \\
+Type 1 - t1\_graph\_6.csv & 70 & 2029 \\
+Type 1 - t1\_graph\_7.csv & 80 & 2729 \\
+Type 1 - t1\_graph\_8.csv & 90 & 3511 \\
+Type 1 - t1\_graph\_9.csv & 100 & 4384 \\
+\hline
+Type 2 - t2\_graph\_0.csv & 10 & 45 \\
+Type 2 - t2\_graph\_1.csv & 20 & 172 \\
+Type 2 - t2\_graph\_2.csv & 30 & 336 \\
+Type 2 - t2\_graph\_3.csv & 40 & 505 \\
+Type 2 - t2\_graph\_4.csv & 50 & 683 \\
+Type 2 - t2\_graph\_5.csv & 60 & 898 \\
+Type 2 - t2\_graph\_6.csv & 70 & 1067 \\
+Type 2 - t2\_graph\_7.csv & 80 & 1296 \\
+Type 2 - t2\_graph\_8.csv & 90 & 1504 \\
+Type 2 - t2\_graph\_9.csv & 100 & 1675 \\
+\hline
+Type 3 - t3\_graph\_0.csv & 10 & 17 \\
+Type 3 - t3\_graph\_1.csv & 20 & 40 \\
+Type 3 - t3\_graph\_2.csv & 30 & 56 \\
+Type 3 - t3\_graph\_3.csv & 40 & 76 \\
+Type 3 - t3\_graph\_4.csv & 50 & 96 \\
+Type 3 - t3\_graph\_5.csv & 60 & 114 \\
+Type 3 - t3\_graph\_6.csv & 70 & 139 \\
+Type 3 - t3\_graph\_7.csv & 80 & 158 \\
+Type 3 - t3\_graph\_8.csv & 90 & 174 \\
+Type 3 - t3\_graph\_9.csv & 100 & 197 \\
+\bottomrule
+\end{tabular}
+\caption{Node and edge counts for all graphs.}
+\label{tab:node_edge_counts}
+\end{table}
+
+\section*{Deliverable 2: Graph Sparsity or Density}
+The classification of each graph type as sparse or dense is determined based on edge density.
+Results indicate:
+\begin{itemize}
+    \item \textbf{Type 1}: Dense [\textit{See Figures 1 and 2} - not linear, number of edges approaches/mirrors maximum]
+    \item \textbf{Type 2}: Sparse [\textit{See Figures 3 and 4} - linear relationship, does not approach max number of edges]
+    \item \textbf{Type 3}: Sparse [\textit{See Figures 4 and 5} - linear relationship, does not approach max number of edges]
+\end{itemize}
+
+\newpage
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\textwidth]{edge_vertex_relationship_type-1.png}
+\caption{Relationship Between Number of Edges and Vertices for Type 1 Graphs.}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\textwidth]{edge_vertex_max_relationship_type-1.png}
+\caption{Edge/Vertex Relationship as Compared to the Max Number of Edges for Type 1 Graphs.}
+\end{figure}
+
+\newpage
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\textwidth]{edge_vertex_relationship_type-2.png}
+\caption{Relationship Between Number of Edges and Vertices for Type 2 Graphs.}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\textwidth]{edge_vertex_max_relationship_type-2.png}
+\caption{Edge/Vertex Relationship as Compared to the Max Number of Edges for Type 2 Graphs.}
+\end{figure}
+
+\newpage
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\textwidth]{edge_vertex_relationship_type-3.png}
+\caption{Relationship Between Number of Edges and Vertices for Type 3 Graphs.}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\textwidth]{edge_vertex_max_relationship_type-3.png}
+\caption{Edge/Vertex Relationship as Compared to the Max Number of Edges for Type 3 Graphs.}
+\end{figure}
+
+\newpage
+\section*{Deliverable 3: MST Weights}
+The total weights of the MSTs computed using Prim's and Kruskal's algorithms are summarized below. 
+
+\vspace{.5cm}
+\begin{table}[h!]
+\centering
+\begin{tabular}{lrr}
+\toprule
+\textbf{Graph} & \textbf{MST} \\
+\midrule
+Type 1 - t1\_graph\_0.csv & 54 \\
+Type 1 - t1\_graph\_1.csv & 105 \\
+Type 1 - t1\_graph\_2.csv & 109 \\
+Type 1 - t1\_graph\_3.csv & 129 \\
+Type 1 - t1\_graph\_4.csv & 140 \\
+Type 1 - t1\_graph\_5.csv & 173 \\
+Type 1 - t1\_graph\_6.csv & 180 \\
+Type 1 - t1\_graph\_7.csv & 213 \\
+Type 1 - t1\_graph\_8.csv & 244 \\
+Type 1 - t1\_graph\_9.csv & 247 \\
+\hline
+Type 2 - t2\_graph\_0.csv & 15 \\
+Type 2 - t2\_graph\_1.csv & 23 \\
+Type 2 - t2\_graph\_2.csv & 30 \\
+Type 2 - t2\_graph\_3.csv & 42 \\
+Type 2 - t2\_graph\_4.csv & 53 \\
+Type 2 - t2\_graph\_5.csv & 60 \\
+Type 2 - t2\_graph\_6.csv & 73 \\
+Type 2 - t2\_graph\_7.csv & 83 \\
+Type 2 - t2\_graph\_8.csv & 91 \\
+Type 2 - t2\_graph\_9.csv & 101 \\
+\hline
+Type 3 - t3\_graph\_0.csv & 32 \\
+Type 3 - t3\_graph\_1.csv & 50 \\
+Type 3 - t3\_graph\_2.csv & 99 \\
+Type 3 - t3\_graph\_3.csv & 97 \\
+Type 3 - t3\_graph\_4.csv & 140 \\
+Type 3 - t3\_graph\_5.csv & 213 \\
+Type 3 - t3\_graph\_6.csv & 182 \\
+Type 3 - t3\_graph\_7.csv & 261 \\
+Type 3 - t3\_graph\_8.csv & 266 \\
+Type 3 - t3\_graph\_9.csv & 320 \\
+\bottomrule
+\end{tabular}
+\caption{MSTs for all graphs.}
+\label{tab:mst_graphs}
+\end{table}
+
+\newpage
+\section*{Deliverable 4: Timing Analysis}
+The empirical timing results for Prim's and Kruskal's algorithms are shown below. 
+
+\subsection*{Prim's Algorithm}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\textwidth]{timing-analysis-Prim-type-1.png}
+\caption{Prim's Timing Analysis for Type 1 Graphs.}
+\end{figure}
+
+The type-1 graph results in Figure 7 appear exponential - $\Theta(e^{|V|})$ - which exceeds the quadratic runtime found in Homework 8 - ($\Theta(|V|^2)$). This was the densest set of graphs, so the runtimes overall were much higher than for types-2 and 3. It's possible that given more data points, this plot would approach quadratic - but it's hard to tell from the provided ten graphs. There is also a possibility that my computer cache is affecting the length of later operations, but it would require more in-depth analysis.  
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\textwidth]{timing-analysis-Prim-type-2.png}
+\caption{Prim's Timing Analysis for Type 2 Graphs.}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\textwidth]{timing-analysis-Prim-type-3.png}
+\caption{Prim's Timing Analysis for Type 3 Graphs.}
+\end{figure}
+
+The type-2 results in Figure 8 and the type-3 results in Figure 9 both appear much more quadratic - ($\Theta(|V|^2)$). This matches the runtime as found in Homework 8 and confirms what we know about Prim's algorithm. 
+
+A scaled version of $|V|^2$ was included on Figures 7, 8, and 9 for comparison (red line). These lines show that in Figures 7, 8, and 9 the time complexity of our algorithm either meets or exceeds $\Theta(|V|^2)$.
+
+\newpage
+\subsection*{Kruskal's Algorithm}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.77\textwidth]{timing-analysis-Kruskal-type-1.png}
+\caption{Kruskal's Timing Analysis for Type 1 Graphs.}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.77\textwidth]{timing-analysis-Kruskal-type-2.png}
+\caption{Kruskal's Timing Analysis for Type 2 Graphs.}
+\end{figure}
+
+\newpage
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\textwidth]{timing-analysis-Kruskal-type-3.png}
+\caption{Kruskal's Timing Analysis for Type 3 Graphs.}
+\end{figure}
+
+Figures 10 and 11 show that Kruskal's algorithm was not only faster than Prim's, but that it clearly resulted in the expected time complexity of $\Theta(E\log E)$ for types-1 and 2. Figure 12, which shows our type-3 runtimes, seems like it might have quadratic time complexity, but that would still exceed $\Theta(E\log E)$ as requested.
+
+A scaled version of $E\log E$ was included on Figures 10, 11, and 12 for comparison (green line). These lines show that the time complexity of our implementation either met or exceeded $\Theta(E\log E)$.
+
+
+\section*{Conclusion}
+This project demonstrated the implementation and analysis of MST algorithms across graph types. The results mostly aligned with theoretical expectations, and empirical findings provided deeper insights into algorithm performance.
+
+\end{document}
